@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+    <h:head>
+        <title>TODO supply a title</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </h:head>
+    <h:body>
+        <div>
+            <h1>Registrar</h1>
+            <h:form>
+                <label for="marca">Nome da Marca</label>
+                <br/>
+                <h:inputText id="marca" value="#{marcaControle.marca.nome}"/>
+                <br/>
+                <label for="paisOr">País de Origem</label>
+                <br/>
+                <h:inputText id="paisOr" value="#{marcaControle.marca.paisOrigem}"/>                
+                <br/>
+                <h:commandButton action="#{marcaControle.salvar()}" value="Submit" onclick="update = @all"></h:commandButton>
+            </h:form>    
+            <h1>Alterar</h1>
+            <h:form>
+                <ui:repeat value="#{marcaControle.marcas}" var="q">
+                    <div>
+                        <table>
+                            <tr>
+                                <td>#{q.nome}</td>
+                                <td>#{q.paisOrigem}</td>
+                                <td><h:commandLink value="Selecionar" action="#{marcaControle.chamaAlterar}"></h:commandLink></td>
+                            </tr>
+                        </table>                                        
+                    </div>
+                </ui:repeat>
+            </h:form>
+        </div>
+    </h:body>
+    
+</html>
